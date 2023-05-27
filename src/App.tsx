@@ -1,25 +1,42 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { getFirestore, collection, getDocs } from 'firebase/firestore'
+import { initializeApp } from "firebase/app";
+import Home from './pages/Home'
+import Chat from './pages/Chat'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCg0bm30Go66_1yDcFTBbjKcAXNklKSAXU",
+  authDomain: "bouvet-7260c.firebaseapp.com",
+  projectId: "bouvet-7260c",
+  storageBucket: "bouvet-7260c.appspot.com",
+  messagingSenderId: "670236563148",
+  appId: "1:670236563148:web:30487ec7008cbe114d9469",
+  measurementId: "G-32F2SLL7LF"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore()
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+     <Routes>
+     <Route 
+        path="/" 
+        element= { <Home /> }
+      />
+      <Route
+        path="/chat"
+        element={<Chat /> }
+          />
+     </Routes>
+    </BrowserRouter>
   );
 }
 
