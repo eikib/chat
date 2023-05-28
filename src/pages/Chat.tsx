@@ -29,7 +29,7 @@ const Chat: React.FC = () => {
 
     const q = query(colRef, orderBy('createdAt', "desc"), limit(10));
 
-    const fetchMessages = () => {
+    const unsubscribe = () => {
         onSnapshot(q, (snapshot) => {
             var messages: Messages[] = []
             snapshot.docs.forEach((doc) => {
@@ -57,17 +57,11 @@ const Chat: React.FC = () => {
     useEffect(() => {
         if (!localStorage.getItem("name")) {
           navigate("/");
-        } else {
-            fetchMessages();
         }
         }, []);
-
-
+    
     useEffect(() => {
-        const interval = setInterval(() => {
-            fetchMessages();
-        }, 2500);
-        return () => clearInterval(interval);
+        unsubscribe();
         }, []);
 
 
