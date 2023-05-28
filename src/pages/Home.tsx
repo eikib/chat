@@ -2007,18 +2007,16 @@ const Home: React.FC = () => {
         if (allNames.length !== 0) {
 
             const firstName = allNames[Math.floor(Math.random() * allNames.length)];
-            console.log(firstName)
             setRandomGeneratedFirstName(firstName["name"]);
-            localStorage.setItem("first_name", firstName["name"]);
 
             const lastName = allNames[Math.floor(Math.random() * allNames.length)];
             if (firstName["gender"] == "boy") {
                 setRandomGeneratedLastName(lastName["name"] + '-sen');
-                localStorage.setItem("last_name", lastName["name"] + '-sen');
+                localStorage.setItem("name", firstName["name"] + ' ' + lastName["name"] + '-sen');
             } 
             else if (firstName["gender"] == "girl") {
                 setRandomGeneratedLastName(lastName["name"] + '-dottir');
-                localStorage.setItem("last_name", lastName["name"] + '-dottir');
+                localStorage.setItem("name", firstName["name"] + ' ' + lastName["name"] + '-dottir');
             }
         } else {
             return
@@ -2039,7 +2037,7 @@ const Home: React.FC = () => {
         navigate("/chat")
         }
 
-        
+
     return (
         <div className='App'>
             <h1>Velkommen til chatten</h1>

@@ -6,7 +6,7 @@ import Home from './pages/Home'
 import Chat from './pages/Chat'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
+// npm run build
 
 const firebaseConfig = {
   apiKey: "AIzaSyCg0bm30Go66_1yDcFTBbjKcAXNklKSAXU",
@@ -20,7 +20,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore()
-
 
 
 function App() {
